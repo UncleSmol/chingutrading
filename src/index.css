@@ -1,68 +1,237 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  /* =====================================================
+  1. CORE BRAND IDENTITY & COLORS - MODERN ASIAN FUSION
+  ===================================================== */
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* Primary Brand Colors - Modern & Vibrant */
+  --color-primary-50: #fef2f2; 
+  --color-primary-100: #fee2e2;
+  --color-primary-200: #fecaca;
+  --color-primary-300: #fca5a5;
+  --color-primary-400: #f87171; 
+  --color-primary-500: #dc2626; 
+  --color-primary-600: #b91c1c;
+  --color-primary-700: #991b1b; 
+  --color-primary-800: #7f1d1d;
+  --color-primary-900: #63171b;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+  /* Secondary Colors - Serene & Contemporary */
+  --color-secondary-50: #f0f9ff; 
+  --color-secondary-100: #e0f2fe;
+  --color-secondary-200: #bae6fd;
+  --color-secondary-300: #7dd3fc;
+  --color-secondary-400: #38bdf8;
+  --color-secondary-500: #0ea5e9; 
+  --color-secondary-600: #0284c7;
+  --color-secondary-700: #0369a1;
+  --color-secondary-800: #075985;
+  --color-secondary-900: #0c4a6e;
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
+  /* Accent Colors - Modern Asian Fusion */
+  --color-accent-gold: #d4af37; 
+  --color-accent-green: #16a34a; 
+  --color-accent-purple: #8b5cf6; 
+  --color-accent-orange: #f97316; 
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
+  /* Store Background Colors */
+  --store-bg-primary: #fff0d9; 
+  --store-bg-secondary: #ebdfc5; 
+  --store-bg-tertiary: #e0d4b8; 
+  --store-bg-accent: #e0d8ff; 
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
+  /* Asian Element Backgrounds */
+  --bg-matcha: #c8e0c8; 
+  --bg-oolong: #d8c0a8; 
+  --bg-sake: #ffe0b0; 
+  --bg-miso: #d8b898; 
+  --bg-soy: #d8b080; 
+  --bg-wasabi: #c0e0a8; 
+  --bg-ramen: #ffd0a8; 
+  --bg-kimchi: #ffb8b8; 
+  --bg-curry: #ffd890; 
+  --bg-sesame: #d8c8a8; 
+  --bg-lotus: #d8c0d8; 
+  --bg-bamboo: #c0d8a8; 
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
+  /* Gradient Backgrounds */
+  --bg-gradient-hero: linear-gradient(135deg, var(--store-bg-primary) 0%, var(--bg-sake) 50%, var(--store-bg-accent) 100%);
+  --bg-gradient-featured: linear-gradient(45deg, var(--bg-matcha) 0%, var(--bg-oolong) 100%);
+  --bg-gradient-sale: linear-gradient(45deg, var(--color-primary-50) 0%, var(--bg-kimchi) 50%, var(--color-accent-orange) 100%);
+  --bg-gradient-premium: linear-gradient(135deg, var(--bg-lotus) 0%, var(--store-bg-accent) 100%);
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+  /* Pattern Overlays */
+  --bg-pattern-subtle: 
+    linear-gradient(45deg, var(--color-primary-50) 25%, transparent 25%),
+    linear-gradient(-45deg, var(--store-bg-accent) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, var(--color-primary-50) 75%),
+    linear-gradient(-45deg, transparent 75%, var(--store-bg-accent) 75%);
+  --bg-pattern-size: 20px 20px;
+  --bg-pattern-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+
+  /* =====================================================
+  2. NEUTRAL PALETTE (Text, Backgrounds, Borders)
+  ===================================================== */
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280; 
+  --color-gray-600: #4b5563; 
+  --color-gray-700: #374151; 
+  --color-gray-800: #1f2937; 
+  --color-gray-900: #111827;
+
+  /* Semantic Background Colors */
+  --color-bg-primary: var(--store-bg-primary);
+  --color-bg-secondary: var(--store-bg-secondary);
+  --color-bg-tertiary: var(--store-bg-tertiary);
+
+  /* =====================================================
+  3. SEMANTIC COLORS (Feedback & Alerts)
+  ===================================================== */
+  --color-success: #10b981; 
+  --color-warning: #f59e0b; 
+  --color-error: #ef4444; 
+  --color-info: var(--color-secondary-500); 
+
+  /* =====================================================
+  4. TYPOGRAPHY - MODERN ASIAN FUSION
+  ===================================================== */
+
+  /* Font Families */
+  --font-primary: 'Rubik Scribble', 'Inter', system-ui, sans-serif;
+  --font-accent: 'Pangolin', 'Noto Sans', cursive, sans-serif;
+  --font-body: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+
+  /* Font Sizes */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+
+  /* Font Weights */
+  --font-light: 300;
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+
+  /* Line Heights */
+  --leading-tight: 1.25;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.75;
+
+  /* =====================================================
+  5. SPACING & SIZING
+  ===================================================== */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+
+  /* =====================================================
+  6. LAYOUT & COMPONENTS
+  ===================================================== */
+
+  /* Border Radius */
+  --radius-none: 0;
+  --radius-sm: 0.125rem;
+  --radius-base: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  --radius-full: 9999px;
+
+  /* Borders */
+  --border-width: 1px;
+  --border-color: var(--color-gray-300);
+  --border-color-focus: var(--color-primary-500);
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-base: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+  /* Z-Index Scale */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+
+  /* =====================================================
+  7. SPECIFIC COMPONENT VARIABLES
+  ===================================================== */
+
+  /* Header */
+  --header-bg-color: var(--store-bg-primary);
+  --header-height: 4rem;
+
+  /* Buttons */
+  --btn-primary-bg: var(--color-primary-500);
+  --btn-primary-bg-hover: var(--color-primary-600);
+  --btn-primary-text: var(--color-white);
+
+  --btn-secondary-bg: transparent;
+  --btn-secondary-bg-hover: var(--store-bg-secondary);
+  --btn-secondary-text: var(--color-gray-700);
+  --btn-secondary-border: var(--color-gray-300);
+
+  --btn-accent-bg: var(--color-accent-purple);
+  --btn-accent-bg-hover: #7c3aed;
+  --btn-accent-text: var(--color-white);
+
+  /* Inputs */
+  --input-bg: var(--color-white);
+  --input-border: var(--color-gray-300);
+  --input-border-focus: var(--color-primary-500);
+  --input-text: var(--color-gray-800);
+  --input-placeholder: var(--color-gray-500);
+  --input-radius: var(--radius-md);
+
+  /* Product Cards */
+  --card-bg: var(--color-white);
+  --card-shadow: var(--shadow-base);
+  --card-shadow-hover: var(--shadow-md);
+  --card-radius: var(--radius-lg);
+
+  /* Badges */
+  --badge-sale-bg: var(--color-accent-orange);
+  --badge-new-bg: var(--color-accent-purple);
+  --badge-featured-bg: var(--color-accent-gold);
+  --badge-out-bg: var(--color-gray-500);
+  --badge-text: var(--color-white);
+
+  /* =====================================================
+  8. LAYOUT & CONTAINERS
+  ===================================================== */
+  --container-max-width: 80rem;
+  --container-padding: var(--space-4);
+
+  /* Section Spacing */
+  --section-padding-y: var(--space-12);
+
+  /* Grid Gaps */
+  --grid-gap: var(--space-6);
 }
