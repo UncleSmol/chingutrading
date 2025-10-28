@@ -1,0 +1,539 @@
+/* Contact Page Styles */
+.ContactPage {
+    background: var(--store-bg-primary);
+  }
+  
+  .Container {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+  }
+  
+  /* Contact Hero */
+  .ContactHero {
+    padding: var(--space-12) 0;
+    background: linear-gradient(135deg, var(--color-primary-500) 0%, var(--color-accent-purple) 100%);
+    color: var(--color-white);
+    text-align: center;
+  }
+  
+  .ContactHeroContent {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .ContactTitle {
+    font-family: var(--font-primary);
+    font-size: var(--text-4xl);
+    font-weight: var(--font-bold);
+    margin-bottom: var(--space-4);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  @media (min-width: 768px) {
+    .ContactTitle {
+      font-size: var(--text-5xl);
+    }
+  }
+  
+  .ContactSubtitle {
+    font-family: var(--font-accent);
+    font-size: var(--text-xl);
+    opacity: 0.9;
+    line-height: var(--leading-relaxed);
+  }
+  
+  /* Contact Content */
+  .ContactContent {
+    padding: var(--space-12) 0;
+  }
+  
+  .ContactGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+  
+  @media (min-width: 1024px) {
+    .ContactGrid {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-12);
+    }
+  }
+  
+  /* Contact Info */
+  .ContactInfo h2 {
+    font-family: var(--font-primary);
+    font-size: var(--text-3xl);
+    color: var(--color-primary-700);
+    margin-bottom: var(--space-4);
+  }
+  
+  .ContactDescription {
+    font-family: var(--font-body);
+    font-size: var(--text-lg);
+    color: var(--color-gray-700);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-8);
+  }
+  
+  .ContactMethods {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    margin-bottom: var(--space-8);
+  }
+  
+  .ContactMethod {
+    display: flex;
+    gap: var(--space-4);
+    padding: var(--space-4);
+    background: var(--color-white);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+  }
+  
+  .ContactMethod:hover {
+    transform: translateX(8px);
+    box-shadow: var(--shadow-md);
+  }
+  
+  .MethodIcon {
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    background: var(--color-primary-50);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .MethodIcon i {
+    font-size: var(--text-xl);
+    color: var(--color-primary-600);
+  }
+  
+  .MethodInfo h3 {
+    font-family: var(--font-accent);
+    font-size: var(--text-lg);
+    color: var(--color-gray-800);
+    margin-bottom: var(--space-1);
+  }
+  
+  .MethodInfo p {
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    color: var(--color-gray-700);
+    margin-bottom: var(--space-1);
+    line-height: var(--leading-relaxed);
+  }
+  
+  .MethodNote {
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    color: var(--color-gray-500);
+    font-style: italic;
+  }
+  
+  /* Phone and Email Links */
+  .PhoneLink,
+  .EmailLink {
+    color: var(--color-primary-600);
+    text-decoration: none;
+    font-weight: var(--font-semibold);
+    transition: color 0.3s ease;
+    display: block;
+    margin-bottom: var(--space-1);
+  }
+  
+  .PhoneLink:hover,
+  .EmailLink:hover {
+    color: var(--color-primary-700);
+    text-decoration: underline;
+  }
+  
+  /* Contact Social */
+  .ContactSocial h3 {
+    font-family: var(--font-accent);
+    font-size: var(--text-lg);
+    color: var(--color-gray-800);
+    margin-bottom: var(--space-4);
+  }
+  
+  .SocialLinks {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3);
+  }
+  
+  @media (min-width: 480px) {
+    .SocialLinks {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  
+  .SocialLink {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-3);
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    color: var(--color-gray-700);
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+  
+  .SocialLink:hover {
+    background: var(--color-primary-50);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+  
+  .SocialLink i {
+    font-size: var(--text-xl);
+    color: var(--color-primary-600);
+  }
+  
+  .SocialLink span {
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+  }
+  
+  /* Contact Form */
+  .ContactFormSection {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .ContactFormCard {
+    background: var(--color-white);
+    padding: var(--space-8);
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-lg);
+    width: 100%;
+    max-width: 500px;
+  }
+  
+  .ContactFormCard h2 {
+    font-family: var(--font-primary);
+    font-size: var(--text-2xl);
+    color: var(--color-primary-700);
+    margin-bottom: var(--space-6);
+    text-align: center;
+  }
+  
+  .ContactForm {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+  
+  .FormGroup {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+  
+  .FormLabel {
+    font-family: var(--font-accent);
+    font-size: var(--text-base);
+    color: var(--color-gray-700);
+    font-weight: var(--font-medium);
+  }
+  
+  .FormInput,
+  .FormSelect,
+  .FormTextarea {
+    padding: var(--space-3) var(--space-4);
+    border: 2px solid var(--color-gray-300);
+    border-radius: var(--radius-md);
+    background: var(--color-white);
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    color: var(--color-gray-800);
+    transition: all 0.3s ease;
+  }
+  
+  .FormInput:focus,
+  .FormSelect:focus,
+  .FormTextarea:focus {
+    outline: none;
+    border-color: var(--color-primary-500);
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+  }
+  
+  .FormInput::placeholder,
+  .FormTextarea::placeholder {
+    color: var(--color-gray-500);
+  }
+  
+  .FormTextarea {
+    resize: vertical;
+    min-height: 120px;
+    font-family: var(--font-body);
+    line-height: var(--leading-relaxed);
+  }
+  
+  .SubmitButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: var(--space-4) var(--space-6);
+    background: var(--btn-primary-bg);
+    color: var(--btn-primary-text);
+    border: none;
+    border-radius: var(--radius-md);
+    font-family: var(--font-accent);
+    font-size: var(--text-lg);
+    font-weight: var(--font-semibold);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-md);
+    margin-top: var(--space-2);
+  }
+  
+  .SubmitButton:hover {
+    background: var(--btn-primary-bg-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  /* FAQ Section */
+  .ContactFAQ {
+    padding: var(--space-12) 0;
+    background: var(--store-bg-secondary);
+  }
+  
+  .FAQHeader {
+    text-align: center;
+    margin-bottom: var(--space-8);
+  }
+  
+  .FAQHeader h2 {
+    font-family: var(--font-primary);
+    font-size: var(--text-3xl);
+    color: var(--color-primary-700);
+    margin-bottom: var(--space-2);
+  }
+  
+  .FAQHeader p {
+    font-family: var(--font-accent);
+    font-size: var(--text-xl);
+    color: var(--color-gray-600);
+  }
+  
+  .FAQGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  @media (min-width: 768px) {
+    .FAQGrid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-8);
+    }
+  }
+  
+  .FAQItem {
+    background: var(--color-white);
+    padding: var(--space-6);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+  }
+  
+  .FAQItem:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+  
+  .FAQItem h3 {
+    font-family: var(--font-accent);
+    font-size: var(--text-lg);
+    color: var(--color-primary-600);
+    margin-bottom: var(--space-3);
+  }
+  
+  .FAQItem p {
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    color: var(--color-gray-600);
+    line-height: var(--leading-relaxed);
+    margin: 0;
+  }
+  
+  /* Map Section */
+  .ContactMap {
+    padding: var(--space-12) 0;
+    background: var(--store-bg-primary);
+  }
+  
+  .MapHeader {
+    text-align: center;
+    margin-bottom: var(--space-8);
+  }
+  
+  .MapHeader h2 {
+    font-family: var(--font-primary);
+    font-size: var(--text-3xl);
+    color: var(--color-primary-700);
+    margin-bottom: var(--space-2);
+  }
+  
+  .MapHeader p {
+    font-family: var(--font-accent);
+    font-size: var(--text-xl);
+    color: var(--color-gray-600);
+  }
+  
+  .MapContainer {
+    max-width: 100%;
+    margin: 0 auto;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+  }
+  
+  .MapContainer iframe {
+    display: block;
+    width: 100%;
+    border: none;
+  }
+  
+  /* Store Info */
+  .StoreInfo {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-6);
+    background: var(--color-white);
+    padding: var(--space-6);
+    border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+  }
+  
+  .StoreDetail {
+    display: flex;
+    gap: var(--space-3);
+    align-items: flex-start;
+  }
+  
+  .StoreDetail i {
+    font-size: var(--text-xl);
+    color: var(--color-primary-500);
+    margin-top: var(--space-1);
+    flex-shrink: 0;
+  }
+  
+  .StoreDetail h4 {
+    font-family: var(--font-accent);
+    font-size: var(--text-base);
+    color: var(--color-gray-800);
+    margin-bottom: var(--space-1);
+  }
+  
+  .StoreDetail p,
+  .StoreDetail a {
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    color: var(--color-gray-600);
+    margin: 0;
+    line-height: var(--leading-relaxed);
+  }
+  
+  .StoreDetail a {
+    color: var(--color-primary-600);
+    text-decoration: none;
+    font-weight: var(--font-semibold);
+  }
+  
+  .StoreDetail a:hover {
+    color: var(--color-primary-700);
+    text-decoration: underline;
+  }
+  
+  /* Mobile Optimizations */
+  @media (max-width: 767px) {
+    .ContactHero {
+      padding: var(--space-8) 0;
+    }
+    
+    .ContactTitle {
+      font-size: var(--text-3xl);
+    }
+    
+    .ContactSubtitle {
+      font-size: var(--text-lg);
+    }
+    
+    .ContactContent,
+    .ContactFAQ,
+    .ContactMap {
+      padding: var(--space-8) 0;
+    }
+    
+    .ContactFormCard {
+      padding: var(--space-6);
+    }
+    
+    .ContactMethod {
+      flex-direction: column;
+      text-align: center;
+    }
+    
+    .MethodIcon {
+      margin: 0 auto;
+    }
+    
+    .SocialLinks {
+      grid-template-columns: 1fr;
+    }
+    
+    .StoreInfo {
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+      padding: var(--space-4);
+    }
+    
+    .MapContainer iframe {
+      height: 300px;
+    }
+  }
+  
+  /* Focus States for Accessibility */
+  .FormInput:focus,
+  .FormSelect:focus,
+  .FormTextarea:focus,
+  .SubmitButton:focus,
+  .SocialLink:focus,
+  .ContactMethod:focus,
+  .FAQItem:focus,
+  .PhoneLink:focus,
+  .EmailLink:focus {
+    outline: 2px solid var(--color-primary-500);
+    outline-offset: 2px;
+  }
+  
+  .PhoneLink:focus,
+  .EmailLink:focus {
+    border-radius: var(--radius-sm);
+  }
+  
+  /* Reduced Motion Support */
+  @media (prefers-reduced-motion: reduce) {
+    .ContactMethod:hover,
+    .SocialLink:hover,
+    .SubmitButton:hover,
+    .FAQItem:hover {
+      transform: none;
+    }
+  }

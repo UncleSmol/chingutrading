@@ -1,5 +1,9 @@
-body{
+
+
+body,
+html{
   background: var(--store-bg-primary);
+  scrollbar-width: none;
 }
 
 .breakline{

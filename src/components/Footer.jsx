@@ -72,11 +72,11 @@ const Footer = () => {
             <div className="ContactInfo">
               <div className="ContactItem">
                 <i className="bi bi-geo-alt"></i>
-                <span>123 Asian Street, Johannesburg, SA</span>
+                <span>Woltemade 5, eMalahleni, 1034</span>
               </div>
               <div className="ContactItem">
                 <i className="bi bi-telephone"></i>
-                <span>+27 11 123 4567</span>
+                <span>+27 79 984 4807</span>
               </div>
               <div className="ContactItem">
                 <i className="bi bi-envelope"></i>
