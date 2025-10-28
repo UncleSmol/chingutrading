@@ -1,82 +1,13 @@
-import React from 'react'
+import React from 'react';
 import { useCart } from '../../context/CartContext'; 
+import productsData from '../../Products.json';
 import '../../styles/NewArrivals.css';
 
 const NewArrivals = () => {
   const { addToCart, isInCart, getItemQuantity } = useCart();
 
-  // New arrival products data
-  const newArrivalProducts = [
-    {
-      id: 101,
-      name: "Matcha Green Tea Powder",
-      category: "Tea",
-      price: 149.99,
-      originalPrice: 179.99,
-      image: "/images/matcha-powder.jpg",
-      isNew: true,
-      isFeatured: false,
-      rating: 4.9,
-      arrivalDate: "2024-01"
-    },
-    {
-      id: 102,
-      name: "Japanese Wagashi Set",
-      category: "Sweets",
-      price: 199.99,
-      image: "/images/wagashi-set.jpg",
-      isNew: true,
-      isFeatured: false,
-      rating: 4.8,
-      arrivalDate: "2024-01"
-    },
-    {
-      id: 103,
-      name: "Korean Bibimbap Bowl Set",
-      category: "Kitchenware",
-      price: 349.99,
-      originalPrice: 399.99,
-      image: "/images/bibimbap-set.jpg",
-      isNew: true,
-      isFeatured: false,
-      rating: 4.7,
-      arrivalDate: "2024-01"
-    },
-    {
-      id: 104,
-      name: "Thai Coconut Milk 6-Pack",
-      category: "Canned Goods",
-      price: 89.99,
-      image: "/images/coconut-milk.jpg",
-      isNew: true,
-      isFeatured: false,
-      rating: 4.6,
-      arrivalDate: "2024-01"
-    },
-    {
-      id: 105,
-      name: "Chinese Hot Pot Kit",
-      category: "Cooking Kits",
-      price: 229.99,
-      image: "/images/hot-pot-kit.jpg",
-      isNew: true,
-      isFeatured: false,
-      rating: 4.9,
-      arrivalDate: "2024-01"
-    },
-    {
-      id: 106,
-      name: "Japanese Sake Set",
-      category: "Beverages",
-      price: 459.99,
-      originalPrice: 499.99,
-      image: "/images/sake-set.jpg",
-      isNew: true,
-      isFeatured: false,
-      rating: 4.8,
-      arrivalDate: "2024-01"
-    }
-  ];
+  // Filter new arrival products from JSON data
+  const newArrivalProducts = productsData.products.filter(product => product.isNew);
 
   const handleAddToCart = (product) => {
     addToCart(product);
@@ -141,9 +72,15 @@ const NewArrivals = () => {
         </div>
         
         <div className="NewArrivalsGrid">
-          {newArrivalProducts.map(product => (
-            <ProductCard key={product.id} product={product} />
-          ))}
+          {newArrivalProducts.length > 0 ? (
+            newArrivalProducts.map(product => (
+              <ProductCard key={product.id} product={product} />
+            ))
+          ) : (
+            <div className="NoProductsMessage">
+              <p>No new arrivals at the moment.</p>
+            </div>
+          )}
         </div>
         
         <div className="SectionFooter">
@@ -154,7 +91,7 @@ const NewArrivals = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default NewArrivals
+export default NewArrivals;

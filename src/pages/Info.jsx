@@ -1,12 +1,89 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/Info.css';
 
 const Info = () => {
+  const navigate = useNavigate();
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const handleLoadedData = () => {
+      setIsVideoLoaded(true);
+      video.play().catch(error => {
+        console.log('Auto-play prevented:', error);
+      });
+    };
+
+    const handleCanPlay = () => {
+      setIsVideoLoaded(true);
+    };
+
+    video.addEventListener('loadeddata', handleLoadedData);
+    video.addEventListener('canplay', handleCanPlay);
+    video.preload = 'metadata';
+
+    return () => {
+      video.removeEventListener('loadeddata', handleLoadedData);
+      video.removeEventListener('canplay', handleCanPlay);
+    };
+  }, []);
+
+  const handleUserInteraction = () => {
+    const video = videoRef.current;
+    if (video && video.paused) {
+      video.play().catch(console.error);
+    }
+  };
+
+  const handleShopClick = (e) => {
+    e.preventDefault();
+    navigate('/store');
+  };
+
+  const handleContactClick = (e) => {
+    e.preventDefault();
+    navigate('/contact');
+  };
+
   return (
     <div className="InfoPage">
-      {/* Hero Banner */}
-      <section className="InfoHero">
-        <div className="InfoHeroOverlay"></div>
+      {/* Hero Banner with Video Background */}
+      <section 
+        className="InfoHero"
+        onClick={handleUserInteraction}
+      >
+        {/* Video Background */}
+        <div className={`InfoVideoBackground ${isVideoLoaded ? 'video-loaded' : 'video-loading'}`}>
+          <video
+            ref={videoRef}
+            className="InfoBackgroundVideo"
+            muted
+            loop
+            playsInline
+            disablePictureInPicture
+            preload="metadata"
+            aria-hidden="true"
+          >
+            <source src="https://cdn.pixabay.com/video/2017/07/23/10853-226632937_large.mp4" type="video/mp4" />
+            {/* Fallback for browsers that don't support video */}
+            <div className="InfoVideoFallback">
+              <div className="InfoFallbackGradient"></div>
+            </div>
+          </video>
+          <div className="InfoVideoOverlay"></div>
+          
+          {/* Loading placeholder */}
+          {!isVideoLoaded && (
+            <div className="InfoVideoPlaceholder">
+              <div className="InfoLoadingSpinner"></div>
+            </div>
+          )}
+        </div>
+
         <div className="InfoHeroContent">
           <div className="Container">
             <div className="InfoHeroText">
@@ -27,6 +104,24 @@ const Info = () => {
                   <span className="HeroStatNumber">10k+</span>
                   <span className="HeroStatLabel">Happy Customers</span>
                 </div>
+              </div>
+
+              {/* CTA Buttons */}
+              <div className="InfoHeroActions">
+                <button 
+                  onClick={handleShopClick}
+                  className="InfoHeroButton InfoHeroButtonPrimary"
+                >
+                  <i className="bi bi-basket"></i>
+                  Start Shopping
+                </button>
+                <button 
+                  onClick={handleContactClick}
+                  className="InfoHeroButton InfoHeroButtonSecondary"
+                >
+                  <i className="bi bi-chat"></i>
+                  Contact Our Experts
+                </button>
               </div>
             </div>
           </div>
@@ -227,14 +322,20 @@ const Info = () => {
             <h2>Ready to Explore Authentic Asian Flavors?</h2>
             <p>Join thousands of South Africans who trust Chingu for their Asian cooking needs</p>
             <div className="InfoCTAActions">
-              <a href="/store" className="CTAPrimary">
+              <button 
+                onClick={handleShopClick}
+                className="CTAPrimary"
+              >
                 <i className="bi bi-basket"></i>
                 Start Shopping
-              </a>
-              <a href="/contact" className="CTASecondary">
+              </button>
+              <button 
+                onClick={handleContactClick}
+                className="CTASecondary"
+              >
                 <i className="bi bi-chat"></i>
                 Contact Our Experts
-              </a>
+              </button>
             </div>
           </div>
         </div>

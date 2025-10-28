@@ -1,5 +1,6 @@
 import React from 'react';
 import { useCart } from '../../context/CartContext'; 
+import productsData from '../../Products.json'; 
 import '../../styles/FeaturedProducts.css';
 
 const FeaturedProducts = ({
@@ -13,52 +14,9 @@ const FeaturedProducts = ({
 }) => {
   const { addToCart, isInCart, getItemQuantity } = useCart();
 
-  // Sample products data if none provided
-  const defaultProducts = [
-    {
-      id: 1,
-      name: "Japanese Ramen Kit",
-      category: "Noodles",
-      price: 89.99,
-      originalPrice: 99.99,
-      image: "/images/ramen-kit.jpg",
-      isNew: true,
-      isFeatured: true,
-      rating: 4.8
-    },
-    {
-      id: 2,
-      name: "Korean Gochujang Paste",
-      category: "Sauces",
-      price: 64.99,
-      image: "/images/gochujang.jpg",
-      isOnSale: true,
-      isFeatured: true,
-      rating: 4.6
-    },
-    {
-      id: 3,
-      name: "Chinese Tea Set",
-      category: "Tea & Accessories",
-      price: 299.99,
-      image: "/images/tea-set.jpg",
-      isFeatured: true,
-      rating: 4.9
-    },
-    {
-      id: 4,
-      name: "Thai Curry Paste Set",
-      category: "Sauces",
-      price: 129.99,
-      originalPrice: 149.99,
-      image: "/images/curry-paste.jpg",
-      isOnSale: true,
-      isFeatured: true,
-      rating: 4.7
-    }
-  ];
-
-  const displayProducts = products.length > 0 ? products : defaultProducts;
+  // Use products from props or JSON data, filtered for featured products
+  const displayProducts = products.length > 0 ? products : productsData.products;
+  
   const filteredProducts = categoryFilter 
     ? displayProducts.filter(product => product.category === categoryFilter)
     : displayProducts.filter(product => product.isFeatured);
@@ -130,9 +88,15 @@ const FeaturedProducts = ({
         </div>
         
         <div className="ProductsGrid">
-          {productsToShow.map(product => (
-            <ProductCard key={product.id} product={product} />
-          ))}
+          {productsToShow.length > 0 ? (
+            productsToShow.map(product => (
+              <ProductCard key={product.id} product={product} />
+            ))
+          ) : (
+            <div className="NoProductsMessage">
+              <p>No featured products found.</p>
+            </div>
+          )}
         </div>
         
         {showViewAll && productsToShow.length > 0 && (

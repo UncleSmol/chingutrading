@@ -1,13 +1,49 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/Contact.css';
 
 const Contact = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     subject: '',
     message: ''
   });
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const handleLoadedData = () => {
+      setIsVideoLoaded(true);
+      video.play().catch(error => {
+        console.log('Auto-play prevented:', error);
+      });
+    };
+
+    const handleCanPlay = () => {
+      setIsVideoLoaded(true);
+    };
+
+    video.addEventListener('loadeddata', handleLoadedData);
+    video.addEventListener('canplay', handleCanPlay);
+    video.preload = 'metadata';
+
+    return () => {
+      video.removeEventListener('loadeddata', handleLoadedData);
+      video.removeEventListener('canplay', handleCanPlay);
+    };
+  }, []);
+
+  const handleUserInteraction = () => {
+    const video = videoRef.current;
+    if (video && video.paused) {
+      video.play().catch(console.error);
+    }
+  };
 
   const handleChange = (e) => {
     setFormData({
@@ -18,26 +54,72 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission here
     console.log('Form submitted:', formData);
     // You can add your form submission logic here
   };
 
+  const handleShopClick = (e) => {
+    e.preventDefault();
+    navigate('/store');
+  };
+
   return (
     <div className="ContactPage">
-      {/* Hero Section */}
-      <section className="ContactHero">
+      {/* Hero Section with Video Background */}
+      <section 
+        className="ContactHero"
+        onClick={handleUserInteraction}
+      >
+        {/* Video Background */}
+        <div className={`ContactVideoBackground ${isVideoLoaded ? 'video-loaded' : 'video-loading'}`}>
+          <video
+            ref={videoRef}
+            className="ContactBackgroundVideo"
+            muted
+            loop
+            playsInline
+            disablePictureInPicture
+            preload="metadata"
+            aria-hidden="true"
+          >
+            <source src="https://cdn.pixabay.com/video/2022/12/21/143741-784138167_large.mp4" type="video/mp4" />
+            {/* Fallback for browsers that don't support video */}
+            <div className="ContactVideoFallback">
+              <div className="ContactFallbackGradient"></div>
+            </div>
+          </video>
+          <div className="ContactVideoOverlay"></div>
+          
+          {/* Loading placeholder */}
+          {!isVideoLoaded && (
+            <div className="ContactVideoPlaceholder">
+              <div className="ContactLoadingSpinner"></div>
+            </div>
+          )}
+        </div>
+
         <div className="Container">
           <div className="ContactHeroContent">
             <h1 className="ContactTitle">Get In Touch</h1>
             <p className="ContactSubtitle">
               We'd love to hear from you. Send us a message and we'll respond as soon as possible.
             </p>
+            
+            {/* CTA Button */}
+            <div className="ContactHeroActions">
+              <button 
+                onClick={handleShopClick}
+                className="ContactHeroButton"
+              >
+                <i className="bi bi-basket"></i>
+                Shop While You Wait
+              </button>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Contact Content */}
+      {/* Rest of your existing contact sections remain the same */}
       <section className="ContactContent">
         <div className="Container">
           <div className="ContactGrid">
@@ -215,7 +297,7 @@ const Contact = () => {
           </div>
           <div className="MapContainer">
             <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3589.585294579917!2d29.227350976055256!3d-25.8831230772759!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1eeaeddf3286f0d1%3A0x6f194c3b7f8cb370!2sChingu%20Trading!5e0!3m2!1sen!2sza!4v1761635252106!5m2!1sen!2sza" 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3589.585294579917!2d29.227350776055256!3d-25.8831230772759!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1eeaeddf3286f0d1%3A0x6f194c3b7f8cb370!2sChingu%20Trading!5e0!3m2!1sen!2sza!4v1761635252106!5m2!1sen!2sza" 
               width="100%" 
               height="450" 
               style={{ border: 0, borderRadius: 'var(--radius-xl)' }}
